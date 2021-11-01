@@ -27,7 +27,10 @@ LIBFT			:=	Libft/
 LIBFT_NAME		:=	libft.a
 
 # FILES
-SRCS			:=	ft_operations.c \
+SRCS			:=	ft_push.c \
+					ft_rotate.c \
+					ft_rrotate.c \
+					ft_swap.c \
 					push_swap.c
 OBJS			:=	$(addprefix srcs/, ${SRCS:.c=.o})
 

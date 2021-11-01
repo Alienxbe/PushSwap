@@ -12,5 +12,7 @@
 *.out
 push_swap
 
+.vscode
+
 # Libft
 ft_lib/

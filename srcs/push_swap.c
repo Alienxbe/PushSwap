@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 09:48:24 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/01 17:23:59 by mykman           ###   ########.fr       */
+/*   Updated: 2021/11/01 23:14:01 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ static void	print_stack(t_dlist *stack_a, t_dlist *stack_b)
 		else
 			ft_printf("\n");
 	}
-	printf("%5s\t|\t%s\n", "-", "-");
-	printf("%5s\t|\t%s\n", "A", "B");
+	ft_printf("%5s\t|\t%s\n", "-", "-");
+	ft_printf("%5s\t|\t%s\n", "A", "B");
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		i;
 	t_dlist	*stack_a;
 	t_dlist	*stack_b;
 	t_dlist	*new;
-	
+
 	if (argc < 2)
 		return (1);
 	stack_a = NULL;
@@ -56,11 +56,7 @@ int main(int argc, char **argv)
 			return (1);
 	}
 	print_stack(stack_a, stack_b);
-	ft_px(&stack_a, &stack_b);
-	ft_px(&stack_a, &stack_b);
-	ft_ss(&stack_a, &stack_b);
-	ft_px(&stack_b, &stack_a);
-	ft_px(&stack_b, &stack_a);
+	ft_rx(&stack_a);
 	print_stack(stack_a, stack_b);
 	ft_dlstclear(&stack_a, NULL);
 	ft_dlstclear(&stack_b, NULL);
