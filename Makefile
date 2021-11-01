@@ -6,7 +6,7 @@
 #    By: mykman <mykman@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2021/10/27 11:30:42 by mykman           ###   ########.fr        #
+#    Updated: 2021/11/01 16:05:24 by mykman           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ PREFIX			=	[${YELLOW}${NAME}${RESET}]\t
 
 # VARIABLES
 NAME			:=	push_swap
-LIBFT			:=	ft_lib/
+LIBFT			:=	Libft/
 LIBFT_NAME		:=	libft.a
 
 # FILES
@@ -42,18 +42,25 @@ $(NAME):		${OBJS} ${LIBFT_NAME}
 
 all:			${NAME}
 
-$(LIBFT_NAME):
-	@make -C ${LIBFT}
-	@mv ${LIBFT}/${LIBFT_NAME} ./
+$(LIBFT_NAME):	update
+	@make -C ${LIBFT} NAME=../${LIBFT_NAME}
+
+install:
+	@git clone https://github.com/Alienxbe/Libft.git
+
+update:
+	@git -C ${LIBFT} pull
 
 clean:
-	@make -C ${LIBFT} clean
+	@make -C ${LIBFT} NAME=../${LIBFT_NAME} clean
 	@rm -f ${OBJS}
 	@echo "${PREFIX}${BLUE}Cleaning object files...${RESET}"
 
 fclean:
-	@make -C ${LIBFT} fclean
+	@make -C ${LIBFT} NAME=../${LIBFT_NAME} fclean
 	@rm -f ${NAME} ${LIBFT_NAME} ${OBJS}
 	@echo "${PREFIX}${RED}Full clean.${RESET}"
 
 re:				fclean all
+
+.PHONY:			all install clean fclean re
