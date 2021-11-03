@@ -6,7 +6,7 @@
 #    By: mykman <mykman@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2021/11/01 16:05:24 by mykman           ###   ########.fr        #
+#    Updated: 2021/11/03 21:58:10 by mykman           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ LIBFT_NAME		:=	libft.a
 SRCS			:=	ft_push.c \
 					ft_rotate.c \
 					ft_rrotate.c \
+					ft_solve.c \
 					ft_swap.c \
+					ft_utils.c \
 					push_swap.c
 OBJS			:=	$(addprefix srcs/, ${SRCS:.c=.o})
 

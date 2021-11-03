@@ -12,7 +12,11 @@
 *.out
 push_swap
 
+# Vagrind
+*.dSYM
+
+# VSCode state
 .vscode
 
 # Libft
-ft_lib/
+Libft/

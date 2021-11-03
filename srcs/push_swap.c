@@ -6,58 +6,34 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 09:48:24 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/01 23:14:01 by mykman           ###   ########.fr       */
+/*   Updated: 2021/11/03 22:58:11 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	print_stack(t_dlist *stack_a, t_dlist *stack_b)
+static int	free_return(int value, t_dlist *stack, int *content)
 {
-	ft_printf("--------------------------------\n");
-	while (stack_a || stack_b)
-	{
-		if (stack_a)
-		{
-			ft_printf("%5s\t|", (char *)stack_a->content);
-			stack_a = stack_a->next;
-		}
-		else
-			ft_printf("     \t|");
-		if (stack_b)
-		{
-			ft_printf("\t%s\n", (char *)stack_b->content);
-			stack_b = stack_b->next;
-		}
-		else
-			ft_printf("\n");
-	}
-	ft_printf("%5s\t|\t%s\n", "-", "-");
-	ft_printf("%5s\t|\t%s\n", "A", "B");
+	if (content)
+		free(content);
+	if (stack)
+		ft_dlstclear(&stack, NULL);
+	return (value);
 }
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_dlist	*stack_a;
 	t_dlist	*stack_b;
-	t_dlist	*new;
+	int		*content;
 
 	if (argc < 2)
 		return (1);
-	stack_a = NULL;
+	content = NULL;
+	stack_a = fill_stack(argc, argv, &content);
 	stack_b = NULL;
-	i = 0;
-	while (++i < argc)
-	{
-		new = ft_dlstnew(argv[i]);
-		ft_dlstadd_back(&stack_a, new);
-		if (!new)
-			return (1);
-	}
-	print_stack(stack_a, stack_b);
-	ft_rx(&stack_a);
-	print_stack(stack_a, stack_b);
+	if (!stack_a || is_sorted(stack_a))
+		return (free_return(1, stack_a, content));
 	ft_dlstclear(&stack_a, NULL);
 	ft_dlstclear(&stack_b, NULL);
 	return (0);
