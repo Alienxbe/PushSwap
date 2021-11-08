@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:05:01 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/03 23:16:34 by mykman           ###   ########.fr       */
+/*   Updated: 2021/11/08 15:59:00 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_dlist	*fill_stack(int argc, char **argv, int **content)
 	while (++i < argc)
 	{
 		(*content)[i - 1] = ft_atoi(argv[i]);
-		if (!ft_isnumber(argv[i])
+		if (!(ft_isnumber(argv[i]) || *argv[i] == '-' || *argv[i] == '+')
 			|| in_list(*content, i - 1, (*content)[i - 1]))
 		{
 			ft_printf("Error!\n");

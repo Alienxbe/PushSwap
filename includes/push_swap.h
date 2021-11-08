@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:06:45 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/04 17:19:33 by mykman           ###   ########.fr       */
+/*   Updated: 2021/11/08 16:28:18 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void	ft_rx(t_dlist **stack, char *text);
 void	ft_rr(t_dlist **stack_a, t_dlist **stack_b);
 void	ft_rrx(t_dlist **stack, char *text);
 void	ft_rrr(t_dlist **stack_a, t_dlist **stack_b);
+
+void	rotate_top(t_dlist **stack, t_dlist *elem);
+
+void	ft_sort(t_dlist **stack_a, t_dlist **stack_b);
 
 
 /*
