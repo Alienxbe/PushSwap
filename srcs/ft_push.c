@@ -6,15 +6,15 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:05:14 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/04 17:17:41 by mykman           ###   ########.fr       */
+/*   Updated: 2021/11/09 15:22:07 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_px(t_dlist **stack_from, t_dlist **stack_to, char *text)
+void	ft_px(t_stack *stack_from, t_stack *stack_to, t_bool output)
 {
-	ft_dlstadd_front(stack_to, ft_dlstremove_front(stack_from));
-	if (text)
-		ft_putendl_fd(text, 1);
+	ft_dlstadd_front(stack_to->first, ft_dlstremove_front(stack_from->first));
+	if (output)
+		ft_printf("p%c\n", stack_to->name);
 }

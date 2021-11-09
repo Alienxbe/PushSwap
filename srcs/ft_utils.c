@@ -6,14 +6,15 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:05:01 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/08 15:59:00 by mykman           ###   ########.fr       */
+/*   Updated: 2021/11/09 23:28:26 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dlist	*fill_stack(int argc, char **argv, int **content)
+t_dlist	**fill_stack(int argc, char **argv, int **content)
 {
+	t_dlist	**return_val;
 	t_dlist	*stack;
 	t_dlist	*new;
 	int		i;
@@ -26,7 +27,7 @@ t_dlist	*fill_stack(int argc, char **argv, int **content)
 	while (++i < argc)
 	{
 		(*content)[i - 1] = ft_atoi(argv[i]);
-		if (!(ft_isnumber(argv[i]) || *argv[i] == '-' || *argv[i] == '+')
+		if (!ft_isnumber(argv[i])
 			|| in_list(*content, i - 1, (*content)[i - 1]))
 		{
 			ft_printf("Error!\n");
@@ -37,7 +38,8 @@ t_dlist	*fill_stack(int argc, char **argv, int **content)
 			return (NULL);
 		ft_dlstadd_back(&stack, new);
 	}
-	return (stack);
+	return_val = &stack;
+	return (return_val);
 }
 
 int	in_list(int *list, int index, int n)

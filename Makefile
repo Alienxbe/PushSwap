@@ -6,7 +6,7 @@
 #    By: mykman <mykman@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2021/11/03 21:58:10 by mykman           ###   ########.fr        #
+#    Updated: 2021/11/08 18:55:35 by mykman           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ LIBFT			:=	Libft/
 LIBFT_NAME		:=	libft.a
 
 # FILES
-SRCS			:=	ft_push.c \
+SRCS			:=	ft_move.c \
+					ft_push.c \
 					ft_rotate.c \
 					ft_rrotate.c \
 					ft_solve.c \
