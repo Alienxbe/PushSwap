@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_solve.c                                         :+:      :+:    :+:   */
+/*   ft_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 15:35:50 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/11 23:32:37 by mykman           ###   ########.fr       */
+/*   Created: 2021/11/11 21:00:04 by mykman            #+#    #+#             */
+/*   Updated: 2021/11/11 21:00:20 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_dlist *stack)
+void	rotate_top(t_dlist **stack, t_dlist *elem)
 {
-	while (stack && stack->next)
-	{
-		if (*(int *)stack->content > *(int *)stack->next->content)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
+	int	move_up;
+	int	move_down;
 
-void	crap_sort(t_dlist **stack_a, t_dlist **stack_b)
-{
-	while (*stack_a)
+	move_up = ft_dlstsize(elem, elem->previous);
+	move_down = ft_dlstsize(elem, elem->next) + 1;
+	while (*stack != elem)
 	{
-		rotate_top(stack_a, ft_dlstmin(*stack_a));
-		if (is_sorted(*stack_a))
-			break ;
-		ft_px(stack_a, stack_b, "pb");
+		if (move_up <= move_down)
+			ft_rx(stack, "ra");
+		else
+			ft_rrx(stack, "rra");
 	}
-	while (*stack_b)
-		ft_px(stack_b, stack_a, "pa");
 }
