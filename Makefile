@@ -6,7 +6,7 @@
 #    By: mykman <mykman@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2021/11/11 21:01:02 by mykman           ###   ########.fr        #
+#    Updated: 2021/11/12 02:13:42 by mykman           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,15 +27,16 @@ LIBFT			:=	Libft/
 LIBFT_NAME		:=	libft.a
 
 # FILES
-SRCS			:=	ft_move.c \
-					ft_push.c \
-					ft_rotate.c \
-					ft_rrotate.c \
-					ft_solve.c \
-					ft_swap.c \
-					ft_utils.c \
-					push_swap.c
+SRCS			:=	errors.c \
+					push_swap.c \
+					setup.c
+SRCS_OP			:=	operations.c \
+					push.c \
+					rotate.c \
+					rrotate.c \
+					swap.c
 OBJS			:=	$(addprefix srcs/, ${SRCS:.c=.o})
+OBJS			+=	$(addprefix srcs/operations/, ${SRCS_OP:.c=.o})
 
 # RULES
 %.o:			%.c
