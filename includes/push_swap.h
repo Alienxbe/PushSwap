@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:06:45 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/12 02:34:12 by mykman           ###   ########.fr       */
+/*   Updated: 2021/11/18 20:26:31 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	add_operation(t_data *data, int op_id);
 */
 
 int		set_data(int argc, char **argv, t_data *data);
+int		issorted(int *lst, int start, int end);
 
 void	ft_exit(t_data data, int exit_value);
 
