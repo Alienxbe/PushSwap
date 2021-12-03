@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 09:48:24 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/11 23:21:44 by mykman           ###   ########.fr       */
+/*   Updated: 2021/11/25 21:13:52 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (!stack_a || is_sorted(stack_a))
 		return (free_return(1, stack_a, content));
-	print_stack(stack_a, stack_b);
+	// print_stack(stack_a, stack_b);
 	crap_sort(&stack_a, &stack_b);
-	print_stack(stack_a, stack_b);
+	//print_stack(stack_a, stack_b);
 	ft_dlstclear(&stack_a, NULL);
 	ft_dlstclear(&stack_b, NULL);
 	return (0);
