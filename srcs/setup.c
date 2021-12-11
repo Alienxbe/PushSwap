@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 01:08:33 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/12 02:48:32 by mykman           ###   ########.fr       */
+/*   Updated: 2021/12/03 15:33:35 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ int	set_data(int argc, char **argv, t_data *data)
 		data->op_list[i] = i;
 	i = 0;
 	while (!ret && ++i < argc)
+	{
+		if (!ft_isnumber(argv[argc - i]))
+			return (1);
 		data->a.lst[i - 1] = ft_atoi(argv[argc - i]);
+	}
 	return (ret);
 }

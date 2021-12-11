@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 09:48:24 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/25 14:22:43 by mykman           ###   ########.fr       */
+/*   Updated: 2021/12/03 15:28:44 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (set_data(argc, argv, &data))
+	{
+		ft_putendl_fd("Error", 2);
 		ft_exit(data, 1);
+	}
 	if (issorted(data.a.lst, data.a.len - 1, -1))
 		ft_exit(data, 1);
 	print_stack(data, argc);
