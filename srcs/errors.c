@@ -19,3 +19,9 @@ void	ft_exit(t_data data, int exit_value)
 	ft_lstclear(&data.to_clear, &free);
 	exit(exit_value);
 }
+
+void	ft_error(t_data data)
+{
+	ft_putendl_fd("Error", 2);
+	ft_exit(data, EXIT_FAILURE);
+}

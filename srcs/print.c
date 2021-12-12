@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 01:23:55 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/12 02:51:44 by mykman           ###   ########.fr       */
+/*   Created: 2021/12/12 17:33:44 by mykman            #+#    #+#             */
+/*   Updated: 2021/12/12 17:33:44 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_data *data, t_stack *from, t_stack *to)
+void	print_operation(void *content)
 {
-	if (!from->len)
-		ft_error(*data);
-	to->lst[to->len++] = from->lst[from->len - 1];
-	from->lst[from->len-- - 1] = 0;
-	add_operation(data, op_pa + to->id);
+	static char	*op_text[11] = {"sa", "sb", "ss", "pa", "pb", "ra",
+		"rb", "rr", "rra", "rrb", "rrr"};
+
+	ft_printf("%s\n", op_text[*(int *)content]);
+}
+
+void	print_stack(t_data data, int argc)
+{
+	int	i;
+
+	ft_printf("Stack a len : %d, stack b len : %d\n", data.a.len, data.b.len);
+	i = argc - 1;
+	while (--i > -1)
+	{
+		ft_printf("%d: %d | %d\n", i, data.a.lst[i], data.b.lst[i]);
+	}
 }

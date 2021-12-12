@@ -23,12 +23,15 @@ PREFIX			=	[${YELLOW}${NAME}${RESET}]\t
 
 # VARIABLES
 NAME			:=	push_swap
+CHECKER_NAME	:=	checker
 LIBFT			:=	Libft/
 LIBFT_NAME		:=	libft.a
 
 # FILES
+MANDATORY_MAIN	:=	push_swap.c
+CHECKER_MAIN	:=	checker.c
 SRCS			:=	errors.c \
-					push_swap.c \
+					print.c \
 					setup.c \
 					solve.c
 SRCS_OP			:=	operations.c \
@@ -38,37 +41,45 @@ SRCS_OP			:=	operations.c \
 					swap.c
 OBJS			:=	$(addprefix srcs/, ${SRCS:.c=.o})
 OBJS			+=	$(addprefix srcs/operations/, ${SRCS_OP:.c=.o})
+OBJS_MANDATORY	:=	$(addprefix srcs/, ${MANDATORY_MAIN:.c=.o}) ${OBJS}
+OBJS_CHECKER	:=	$(addprefix srcs/, ${CHECKER_MAIN:.c=.o}) ${OBJS}
 
 # RULES
 %.o:			%.c
 	${CC} ${CFLAGS} -c -I./includes $< -o ${<:.c=.o}
 	@echo "${PREFIX}Compilation of $<..."
 
-$(NAME):		${OBJS} ${LIBFT_NAME}
+$(NAME):		${OBJS_MANDATORY} ${LIBFT_NAME}
 	${CC} ${CFLAGS} $^ -o $@
 	@echo "${PREFIX}${GREEN}Executable compiled!${RESET}"
 
-all:			${NAME}
+$(CHECKER_NAME):	${OBJS_CHECKER} ${LIBFT_NAME}
+	${CC} ${CFLAGS} $^ -o ${CHECKER_NAME}
+	@echo "${PREFIX}${GREEN}Checker compiled!${RESET}"
 
 $(LIBFT_NAME):	update
-	@make -C ${LIBFT} NAME=../${LIBFT_NAME}
+	@make -s -C ${LIBFT} NAME=../${LIBFT_NAME}
+
+all:			${NAME}
 
 install:
+	@echo "${PREFIX}${GREEN}Installing ${LIBFT}!${RESET}"
 	@git clone https://github.com/Alienxbe/Libft.git
 
 update:
+	@if [ ! -d ${LIBFT} ]; then make install; fi
 	@git -C ${LIBFT} pull
 
 clean:
-	@make -C ${LIBFT} NAME=../${LIBFT_NAME} clean
-	@rm -f ${OBJS}
+	@make -s -C ${LIBFT} NAME=../${LIBFT_NAME} clean
+	@rm -f ${OBJS_CHECKER} ${OBJS_MANDATORY}
 	@echo "${PREFIX}${BLUE}Cleaning object files...${RESET}"
 
 fclean:
-	@make -C ${LIBFT} NAME=../${LIBFT_NAME} fclean
-	@rm -f ${NAME} ${LIBFT_NAME} ${OBJS}
+	@make -s -C ${LIBFT} NAME=../${LIBFT_NAME} fclean
+	@rm -f ${NAME} ${CHECKER_NAME} ${LIBFT_NAME} ${OBJS_CHECKER} ${OBJS_MANDATORY}
 	@echo "${PREFIX}${RED}Full clean.${RESET}"
 
 re:				fclean all
 
-.PHONY:			all install clean fclean re
+.PHONY:			all install clean fclean re update

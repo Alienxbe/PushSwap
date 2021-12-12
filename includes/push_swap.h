@@ -61,6 +61,12 @@ void	add_operation(t_data *data, int op_id);
 int		set_data(int argc, char **argv, t_data *data);
 int		issorted(int *lst, int start, int end);
 
+//	print functions
+void	print_operation(void *content);
+void	print_stack(t_data data, int argc);
+
+// exit functions
 void	ft_exit(t_data data, int exit_value);
+void	ft_error(t_data data);
 
 #endif
