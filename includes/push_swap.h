@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:06:45 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/18 20:26:31 by mykman           ###   ########.fr       */
+/*   Updated: 2021/12/13 16:27:09 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ enum	e_operations
 
 void	swap(t_data *data, t_stack *stack);
 void	push(t_data *data, t_stack *from, t_stack *to);
+void	rotate(t_data *data, t_stack *stack);
+void	rrotate(t_data *data, t_stack *stack);
 
 void	add_operation(t_data *data, int op_id);
 
@@ -61,11 +63,11 @@ void	add_operation(t_data *data, int op_id);
 int		set_data(int argc, char **argv, t_data *data);
 int		issorted(int *lst, int start, int end);
 
-//	print functions
+// Print functions
 void	print_operation(void *content);
 void	print_stack(t_data data, int argc);
 
-// exit functions
+// Exit functions
 void	ft_exit(t_data data, int exit_value);
 void	ft_error(t_data data);
 
