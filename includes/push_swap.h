@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:06:45 by mykman            #+#    #+#             */
-/*   Updated: 2021/12/13 16:27:09 by mykman           ###   ########.fr       */
+/*   Updated: 2021/12/15 12:54:32 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_data
 	t_list	*operations;
 	t_list	*to_clear;
 	int		op_list[11];
+	int		checker_mode;
 }	t_data;
 
 enum	e_operations
@@ -53,8 +54,28 @@ void	swap(t_data *data, t_stack *stack);
 void	push(t_data *data, t_stack *from, t_stack *to);
 void	rotate(t_data *data, t_stack *stack);
 void	rrotate(t_data *data, t_stack *stack);
-
 void	add_operation(t_data *data, int op_id);
+
+void	sa(t_data *data);
+void	sb(t_data *data);
+void	ss(t_data *data);
+void	pa(t_data *data);
+void	pb(t_data *data);
+void	ra(t_data *data);
+void	rb(t_data *data);
+void	rr(t_data *data);
+void	rra(t_data *data);
+void	rrb(t_data *data);
+void	rrr(t_data *data);
+
+
+
+/*
+** CHECKER FUNCTIONS
+*/
+
+void	parse_op(t_data *data, char *line);
+
 
 /*
 ** UTILS

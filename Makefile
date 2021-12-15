@@ -6,7 +6,7 @@
 #    By: mykman <mykman@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2021/11/18 20:27:11 by mykman           ###   ########.fr        #
+#    Updated: 2021/12/14 13:26:24 by mykman           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,17 +30,18 @@ LIBFT_NAME		:=	libft.a
 # FILES
 MANDATORY_MAIN	:=	push_swap.c
 CHECKER_MAIN	:=	checker.c
-SRCS			:=	errors.c \
-					print.c \
-					setup.c \
-					solve.c
 SRCS_OP			:=	operations.c \
 					push.c \
 					rotate.c \
 					rrotate.c \
 					swap.c
-OBJS			:=	$(addprefix srcs/, ${SRCS:.c=.o})
-OBJS			+=	$(addprefix srcs/operations/, ${SRCS_OP:.c=.o})
+SRCS_SOLVE		:=	solve.c
+SRCS_UTILS		:=	errors.c \
+					print.c \
+					setup.c
+OBJS			:=	$(addprefix srcs/operations/, ${SRCS_OP:.c=.o})
+OBJS			+=	$(addprefix srcs/solve/, ${SRCS_SOLVE:.c=.o})
+OBJS			+=	$(addprefix srcs/utils/, ${SRCS_UTILS:.c=.o})
 OBJS_MANDATORY	:=	$(addprefix srcs/, ${MANDATORY_MAIN:.c=.o}) ${OBJS}
 OBJS_CHECKER	:=	$(addprefix srcs/, ${CHECKER_MAIN:.c=.o}) ${OBJS}
 
