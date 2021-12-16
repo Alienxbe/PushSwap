@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 01:24:09 by mykman            #+#    #+#             */
-/*   Updated: 2021/12/15 12:52:14 by mykman           ###   ########.fr       */
+/*   Updated: 2021/12/16 14:14:06 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	swap(t_data *data, t_stack *stack)
 	tmp = stack->lst[stack->len - 1];
 	stack->lst[stack->len - 1] = stack->lst[stack->len - 2];
 	stack->lst[stack->len - 2] = tmp;
-	add_operation(data, op_sa + stack->id);
+	if (!data->checker_mode)
+		add_operation(data, op_sa + stack->id);
 }
 
 

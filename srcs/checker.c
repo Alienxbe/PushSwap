@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:35:17 by mykman            #+#    #+#             */
-/*   Updated: 2021/12/15 13:00:32 by mykman           ###   ########.fr       */
+/*   Updated: 2021/12/16 15:13:40 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	parse_op(t_data *data, char *line)
 	i = -1;
 	while (++i < 11)
 	{
-		if (!ft_strncmp(line, op_text[i], ft_strlen(line)))
+		if (!ft_strncmp(line, op_text[i], ft_strlen(op_text[i]))
+			&& !ft_strncmp(line, op_text[i], ft_strlen(line)))
 		{
 			add_operation(data, i);
 			return ;
@@ -39,7 +40,6 @@ void	do_op(t_data *data)
 	while (ptr)
 	{
 		f[*(int *)ptr->content](data);
-		print_stack(*data, 10);
 		ptr = ptr->next;
 	}
 }
@@ -60,7 +60,10 @@ int	main(int argc, char **argv)
 	}
 	if (line)
 		free(line);
-	ft_printf("----------------------\n");
 	do_op(&data);
+	if (issorted(data.a.lst, data.a.len, -1) && !data.b.len)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 	ft_exit(data, EXIT_SUCCESS);
 }
