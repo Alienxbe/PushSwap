@@ -6,7 +6,7 @@
 #    By: mykman <mykman@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2021/12/16 14:03:17 by mykman           ###   ########.fr        #
+#    Updated: 2021/12/16 15:26:14 by mykman           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ $(CHECKER_NAME):	${OBJS_CHECKER} ${LIBFT_NAME}
 	${CC} ${CFLAGS} $^ -o ${CHECKER_NAME}
 	@echo "${PREFIX}${GREEN}Checker compiled!${RESET}"
 
-$(LIBFT_NAME):	#update
+$(LIBFT_NAME):	update
 	@make -s -C ${LIBFT} NAME=../${LIBFT_NAME}
 
 all:			${NAME}
