@@ -3,70 +3,86 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mykman <mykman@student.s19.be>             +#+  +:+       +#+         #
+#    By: marykman <marykman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2021/11/11 21:01:02 by mykman           ###   ########.fr        #
+#    Updated: 2023/11/02 15:47:10 by marykman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# COMPILATION
-CC				=	@gcc
-CFLAGS			=	-Wall -Wextra -Werror
+# -----------------------------------Colors------------------------------------
 
 RED				:=	\033[38;5;9m
 GREEN			:=	\033[38;5;10m
 BLUE			:= 	\033[38;5;14m
 YELLOW			:=	\033[38;5;226m
+LIGHT_BLUE		:=	\033[38;5;14m
 RESET			:=	\033[38;5;7m
 PREFIX			=	[${YELLOW}${NAME}${RESET}]\t
 
-# VARIABLES
-NAME			:=	push_swap
-LIBFT			:=	Libft/
-LIBFT_NAME		:=	libft.a
+# ---------------------------------Compilation---------------------------------
 
-# FILES
-SRCS			:=	ft_move.c \
-					ft_push.c \
-					ft_rotate.c \
-					ft_rrotate.c \
-					ft_solve.c \
-					ft_swap.c \
-					ft_utils.c \
-					push_swap.c
-OBJS			:=	$(addprefix srcs/, ${SRCS:.c=.o})
+CC					:=	@gcc
+CFLAGS				:=	-Wall -Wextra -Werror -g -fsanitize=address
+RM					:=	@rm -f
 
-# RULES
-%.o:			%.c
-	${CC} ${CFLAGS} -c -I./includes $< -o ${<:.c=.o}
+# ---------------------------------Librairies----------------------------------
+
+FT_FOLDER			:=	libft
+
+FT					:=	${FT_FOLDER}/libft.a
+
+MAKE_FT				:=	@make -s -C ${FT_FOLDER}
+
+INCLUDES			:=	-I ${FT_FOLDER}/includes \
+						-I ./includes
+LIBRARIES			:=	-L./${FT_FOLDER} -lft \
+
+# --------------------------------Source files---------------------------------
+
+NAME				:=	push_swap
+
+# Headers files
+FILES				:=	push_swap.h
+HEADERS				:=	$(addprefix includes/, ${FILES});
+
+# C files
+SRCS				:=	ft_move.c \
+						ft_push.c \
+						ft_rotate.c \
+						ft_rrotate.c \
+						ft_solve.c \
+						ft_swap.c \
+						ft_utils.c \
+						push_swap.c
+OBJS				:=	$(addprefix objs/, ${FILES_MAIN:.c=.o})
+OBJS				+=	$(addprefix objs/env/, ${FILES_ENV:.c=.o})
+
+# -----------------------------------Rules-------------------------------------
+
+objs/%.o:	srcs/%.c
+	${CC} ${CFLAGS} -c ${INCLUDES} $< -o $@
 	@echo "${PREFIX}Compilation of $<..."
 
-$(NAME):		${OBJS} ${LIBFT_NAME}
-	${CC} ${CFLAGS} $^ -o $@
-	@echo "${PREFIX}${GREEN}Executable compiled!${RESET}"
+$(NAME):	${FT} ${OBJS} ${HEADERS}
+	${CC} ${CFLAGS} ${OBJS} ${LIBRARIES} -o $@
+	@echo "${PREFIX}$@ Compiled !"
 
-all:			${NAME}
+$(FT):
+	${MAKE_FT}
 
-$(LIBFT_NAME):	update
-	@make -C ${LIBFT} NAME=../${LIBFT_NAME}
-
-install:
-	@git clone https://github.com/Alienxbe/Libft.git
-
-update:
-	@git -C ${LIBFT} pull
+all:	${NAME}
 
 clean:
-	@make -C ${LIBFT} NAME=../${LIBFT_NAME} clean
-	@rm -f ${OBJS}
-	@echo "${PREFIX}${BLUE}Cleaning object files...${RESET}"
+	${RM} ${OBJS}
+	${MAKE_FT} clean
 
 fclean:
-	@make -C ${LIBFT} NAME=../${LIBFT_NAME} fclean
-	@rm -f ${NAME} ${LIBFT_NAME} ${OBJS}
-	@echo "${PREFIX}${RED}Full clean.${RESET}"
+	${RM} ${OBJS} ${NAME}
+	${MAKE_FT} fclean
 
-re:				fclean all
+re:		fclean all
 
-.PHONY:			all install clean fclean re
+# -----------------------------------.PHONY------------------------------------
+
+.PHONY:	all clean fclean re
