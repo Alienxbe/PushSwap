@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_solve.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
+/*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:35:50 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/11 23:32:37 by mykman           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:05:49 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ void	crap_sort(t_dlist **stack_a, t_dlist **stack_b)
 		ft_px(stack_a, stack_b, "pb");
 	}
 	while (*stack_b)
+	{
 		ft_px(stack_b, stack_a, "pa");
+	}
 }

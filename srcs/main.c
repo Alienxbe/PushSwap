@@ -6,10 +6,11 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 09:48:24 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/02 15:50:34 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:07:32 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "push_swap.h"
 
 static int	free_return(int value, t_dlist *stack, int *content)
@@ -34,10 +35,14 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (!stack_a || is_sorted(stack_a))
 		return (free_return(1, stack_a, content));
-	// print_stack(stack_a, stack_b);
+
+	print_stack(stack_a, stack_b);
 	crap_sort(&stack_a, &stack_b);
-	//print_stack(stack_a, stack_b);
+	print_stack(stack_a, stack_b);
+
+	// Free
 	ft_dlstclear(&stack_a, NULL);
 	ft_dlstclear(&stack_b, NULL);
+	free(content);
 	return (0);
 }

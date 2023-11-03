@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
+/*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:05:01 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/08 15:59:00 by mykman           ###   ########.fr       */
+/*   Updated: 2023/11/02 16:05:33 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_ctype.h"
+#include "ft_memory.h"
+#include "ft_printf.h"
+#include "ft_string.h"
 #include "push_swap.h"
+
+static int	in_list(int *list, int index, int n)
+{
+	int i;
+
+	i = -1;
+	while (++i < --index)
+		if (list[i] == n)
+			return (1);
+	return (0);
+}
 
 t_dlist	*fill_stack(int argc, char **argv, int **content)
 {
@@ -38,17 +53,6 @@ t_dlist	*fill_stack(int argc, char **argv, int **content)
 		ft_dlstadd_back(&stack, new);
 	}
 	return (stack);
-}
-
-int	in_list(int *list, int index, int n)
-{
-	int i;
-
-	i = -1;
-	while (++i < --index)
-		if (list[i] == n)
-			return (1);
-	return (0);
 }
 
 void	print_stack(t_dlist *stack_a, t_dlist *stack_b)

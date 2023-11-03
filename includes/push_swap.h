@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
+/*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:06:45 by mykman            #+#    #+#             */
-/*   Updated: 2021/11/11 23:21:39 by mykman           ###   ########.fr       */
+/*   Updated: 2023/11/02 16:00:28 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "../Libft/includes/libft.h"
+
+# include "ft_dlist.h"
 
 
 /*
@@ -39,7 +40,6 @@ void	crap_sort(t_dlist **stack_a, t_dlist **stack_b);
 t_dlist	*fill_stack(int argc, char **argv, int **content);
 
 int		is_sorted(t_dlist *stack);
-int		in_list(int *list, int index, int n);
 
 void	print_stack(t_dlist *stack_a, t_dlist *stack_b);
 

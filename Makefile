@@ -6,7 +6,7 @@
 #    By: marykman <marykman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2023/11/02 15:47:10 by marykman         ###   ########.fr        #
+#    Updated: 2023/11/02 16:05:47 by marykman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ PREFIX			=	[${YELLOW}${NAME}${RESET}]\t
 # ---------------------------------Compilation---------------------------------
 
 CC					:=	@gcc
-CFLAGS				:=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS				:=	-Wall -Wextra -Werror
 RM					:=	@rm -f
 
 # ---------------------------------Librairies----------------------------------
@@ -36,7 +36,7 @@ MAKE_FT				:=	@make -s -C ${FT_FOLDER}
 
 INCLUDES			:=	-I ${FT_FOLDER}/includes \
 						-I ./includes
-LIBRARIES			:=	-L./${FT_FOLDER} -lft \
+LIBRARIES			:=	-L./${FT_FOLDER} -lft
 
 # --------------------------------Source files---------------------------------
 
@@ -54,9 +54,8 @@ SRCS				:=	ft_move.c \
 						ft_solve.c \
 						ft_swap.c \
 						ft_utils.c \
-						push_swap.c
-OBJS				:=	$(addprefix objs/, ${FILES_MAIN:.c=.o})
-OBJS				+=	$(addprefix objs/env/, ${FILES_ENV:.c=.o})
+						main.c
+OBJS				:=	$(addprefix objs/, ${SRCS:.c=.o})
 
 # -----------------------------------Rules-------------------------------------
 
