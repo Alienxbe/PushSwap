@@ -6,7 +6,7 @@
 #    By: marykman <marykman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2023/11/02 16:05:47 by marykman         ###   ########.fr        #
+#    Updated: 2023/11/06 19:24:25 by marykman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,15 +47,17 @@ FILES				:=	push_swap.h
 HEADERS				:=	$(addprefix includes/, ${FILES});
 
 # C files
-SRCS				:=	ft_move.c \
-						ft_push.c \
-						ft_rotate.c \
-						ft_rrotate.c \
-						ft_solve.c \
+SRCS				:=	ft_solve.c \
 						ft_swap.c \
 						ft_utils.c \
-						main.c
+						main.c \
+						ft_cost.c
+SRCS_MOVES			:=	ft_move.c \
+						ft_push.c \
+						ft_rotate.c \
+						ft_rrotate.c
 OBJS				:=	$(addprefix objs/, ${SRCS:.c=.o})
+OBJS				+=	$(addprefix objs/moves/, ${SRCS_MOVES:.c=.o})
 
 # -----------------------------------Rules-------------------------------------
 

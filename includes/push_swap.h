@@ -6,13 +6,14 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:06:45 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/02 16:00:28 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/07 00:03:09 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stddef.h>
 # include "ft_dlist.h"
 
 
@@ -31,6 +32,9 @@ void	ft_rrr(t_dlist **stack_a, t_dlist **stack_b);
 void	rotate_top(t_dlist **stack, t_dlist *elem);
 
 void	crap_sort(t_dlist **stack_a, t_dlist **stack_b);
+void	cost_sort(t_dlist **stack_a, t_dlist **stack_b);
+
+size_t	get_cost(t_dlist **stack_a, t_dlist **stack_b, t_dlist *element);
 
 
 /*
