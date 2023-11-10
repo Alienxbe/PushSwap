@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 09:48:24 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/10 23:06:22 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/11 00:40:06 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_moves(void *content)
 	char *str;
 
 	str = content;
-	ft_printf("%s -> ", str);
+	ft_printf("%s\n", str);
 }
 
 int	main(int argc, char **argv)
@@ -48,12 +48,9 @@ int	main(int argc, char **argv)
 	if (!stack_a || is_sorted(stack_a))
 		return (free_return(1, stack_a, content));
 
-	print_stack(stack_a, stack_b);
 	moves = cost_sort(&stack_a, &stack_b);
-	print_stack(stack_a, stack_b);
 
 	ft_dlstiter(moves, &print_moves);
-	ft_printf("\nOp count : %d\n", ft_dlstsize(moves, moves->next));
 
 	// Free
 	ft_dlstclear(&stack_a, NULL);

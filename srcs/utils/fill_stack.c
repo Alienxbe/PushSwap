@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:38:43 by marykman          #+#    #+#             */
-/*   Updated: 2023/11/10 20:08:19 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/11 00:39:49 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ static int	in_list(int *list, int index, int n)
 	return (0);
 }
 
+static size_t	array_len(char **array)
+{
+	size_t	i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
+}
+
 t_dlist	*fill_stack(int argc, char **argv, int **content)
 {
 	t_dlist	*stack;
@@ -35,10 +45,16 @@ t_dlist	*fill_stack(int argc, char **argv, int **content)
 	int		i;
 
 	stack = NULL;
+	i = 0;
+	if (argc == 2)
+	{
+		argv = ft_split(argv[1], ' ');
+		argc = array_len(argv);
+		i = -1;
+	}
 	*content = (int *)ft_calloc(argc - 1, sizeof(int));
 	if (!*content)
 		return (NULL);
-	i = 0;
 	while (++i < argc)
 	{
 		(*content)[i - 1] = ft_atoi(argv[i]);

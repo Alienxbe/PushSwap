@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 21:09:54 by marykman          #+#    #+#             */
-/*   Updated: 2023/11/11 00:10:20 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/11 00:24:04 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ static int	same_rotate(t_fmove move_a, t_fmove move_b)
 void	move_x_to_b(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b,
 			t_dlist *element)
 {
-	t_dlist *min;
+	t_dlist *max;
 	t_fmove	move_a;
 	t_fmove	move_b;
 
 	if (!element)
 		return ;
-	min = ft_minstack(*stack_b, *(int *)element->content);
-	if (!min)
-		min = ft_dlstmin(*stack_b);
+	max = ft_maxstack(*stack_b, *(int *)element->content);
+	if (!max)
+		max = ft_dlstmax(*stack_b);
 	move_a = rotate_top_a(element);
-	move_b = rotate_top_b(min);
+	move_b = rotate_top_b(max);
 	if (same_rotate(move_a, move_b))
 	{
-		while (*stack_a != element && *stack_b != min)
+		while (*stack_a != element && *stack_b != max)
 		{
 			if (move_a == &ft_ra)
 				ft_rr(moves, stack_a, stack_b);
@@ -47,7 +47,7 @@ void	move_x_to_b(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b,
 	}
 	while (move_a && *stack_a != element)
 		move_a(moves, stack_a, stack_b);
-	while (move_b && *stack_b != min)
+	while (move_b && *stack_b != max)
 		move_b(moves, stack_a, stack_b);
 	ft_pb(moves, stack_a, stack_b);
 }

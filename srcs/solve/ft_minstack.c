@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:59:57 by marykman          #+#    #+#             */
-/*   Updated: 2023/11/10 17:57:20 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/11 00:23:34 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * 
  * @param stack Stack used for the calculation
  * @param bottom_value Nothing below this value will be returned
- * @return The lowes value found in the stack wich is not below `bottom_value`
+ * @return The lowest value found in the stack wich is not below `bottom_value`
  */
 t_dlist	*ft_minstack(t_dlist *stack, int bottom_value)
 {
@@ -34,4 +34,27 @@ t_dlist	*ft_minstack(t_dlist *stack, int bottom_value)
 		stack = stack->next;
 	}
 	return (min);
+}
+
+/**
+ * @brief Function that find the greatest value in the stack given while
+ * being smaller than `bottom_value`
+ * 
+ * @param stack Stack used for the calculation
+ * @param bottom_value Nothing above this value will be returned
+ * @return The greatest value found in the stack wich is not above `bottom_value`
+ */
+t_dlist	*ft_maxstack(t_dlist *stack, int top_value)
+{
+	t_dlist *max;
+	
+	max = NULL;
+	while (stack)
+	{
+		if ((!max || *(int *)stack->content > *(int *)max->content)
+			&& *(int *)stack->content < top_value)
+			max = stack;
+		stack = stack->next;
+	}
+	return (max);
 }
