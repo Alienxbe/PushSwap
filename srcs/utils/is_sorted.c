@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/27 11:06:45 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/10 20:47:23 by marykman         ###   ########.fr       */
+/*   Created: 2023/11/10 17:59:06 by marykman          #+#    #+#             */
+/*   Updated: 2023/11/10 17:59:14 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "ft_dlist.h"
 
-#endif
+int	is_sorted(t_dlist *stack)
+{
+	while (stack && stack->next)
+	{
+		if (*(int *)stack->content > *(int *)stack->next->content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}

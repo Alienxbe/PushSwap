@@ -6,24 +6,36 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:06:46 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/02 16:04:50 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/10 22:20:16 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include "moves.h"
 #include "ft_printf.h"
-#include "push_swap.h"
 
-void	ft_rx(t_dlist **stack, char *text)
+static void	ft_rx(t_dlist **moves, t_dlist **stack, char *name)
 {
 	ft_dlstadd_back(stack, ft_dlstremove_front(stack));
-	if (text)
-		ft_printf("%s\n", text);
+	if (name)
+		ft_dlstadd_back(moves, ft_dlstnew(name));
 }
 
-void	ft_rr(t_dlist **stack_a, t_dlist **stack_b)
+void	ft_ra(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b)
 {
-	ft_rx(stack_a, NULL);
-	ft_rx(stack_b, NULL);
-	ft_printf("rr\n");
+	(void)stack_b;
+	ft_rx(moves, stack_a, MOVE_RA_STR);
+}
+
+void	ft_rb(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b)
+{
+	(void)stack_a;
+	ft_rx(moves, stack_b, MOVE_RB_STR);
+}
+
+void	ft_rr(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b)
+{
+	ft_rx(moves, stack_a, NULL);
+	ft_rx(moves, stack_b, NULL);
+	ft_dlstadd_back(moves, ft_dlstnew(MOVE_RR_STR));
 }

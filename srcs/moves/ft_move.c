@@ -6,26 +6,31 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 21:00:04 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/07 00:12:53 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/10 19:58:54 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "moves.h"
 
-void	rotate_top(t_dlist **stack, t_dlist *elem)
+static void	ft_init_table(t_fmove *fmove)
 {
-	int	move_up;
-	int	move_down;
+	fmove[SA] = &ft_sa;
+	fmove[SB] = &ft_sb;
+	fmove[SS] = &ft_ss;
+	fmove[PA] = &ft_pa;
+	fmove[PB] = &ft_pb;
+	fmove[RA] = &ft_ra;
+	fmove[RB] = &ft_rb;
+	fmove[RR] = &ft_rr;
+	fmove[RRA] = &ft_rra;
+	fmove[RRB] = &ft_rrb;
+	fmove[RRR] = &ft_rrr;
+}
 
-	if (!*stack || !elem)
-		return ;
-	move_up = ft_dlstsize(elem, elem->previous);
-	move_down = ft_dlstsize(elem, elem->next) + 1;
-	while (*stack != elem)
-	{
-		if (move_up <= move_down)
-			ft_rx(stack, "ra");
-		else
-			ft_rrx(stack, "rra");
-	}
+void	ft_move(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b, t_move move)
+{
+	t_fmove	fmove[MOVE_LEN];
+
+	ft_init_table(fmove);
+	fmove[move](moves, stack_a, stack_b);
 }
