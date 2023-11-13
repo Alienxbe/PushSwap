@@ -6,11 +6,12 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:01:33 by marykman          #+#    #+#             */
-/*   Updated: 2023/11/10 20:45:09 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/11 13:42:24 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "moves.h"
+#include "ft_string.h"
 
 t_move	ft_get_move_value(char *move)
 {
@@ -32,7 +33,7 @@ t_move	ft_get_move_value(char *move)
 	};
 	index = -1;
 	while (++index < MOVE_LEN)
-		if (move == moves[index])
+		if (!ft_strncmp(move, moves[index], 3))
 			return (index);
 	return (MOVE_ERROR);
 }

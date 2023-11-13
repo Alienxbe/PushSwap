@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 21:09:54 by marykman          #+#    #+#             */
-/*   Updated: 2023/11/11 00:24:04 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/11 13:44:21 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	move_x_to_b(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b,
 				ft_rrr(moves, stack_a, stack_b);
 		}
 	}
-	while (move_a && *stack_a != element)
+	while (*stack_a && *stack_a != element)
 		move_a(moves, stack_a, stack_b);
-	while (move_b && *stack_b != max)
+	while (*stack_b && *stack_b != max)
 		move_b(moves, stack_a, stack_b);
 	ft_pb(moves, stack_a, stack_b);
 }
