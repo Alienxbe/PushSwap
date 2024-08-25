@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:38:43 by marykman          #+#    #+#             */
-/*   Updated: 2023/11/11 00:39:49 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/25 17:28:30 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,30 @@ t_dlist	*fill_stack(int argc, char **argv, int **content)
 	t_dlist	*stack;
 	t_dlist	*new;
 	int		i;
+	int		offset;
 
 	stack = NULL;
-	i = 0;
+	i = -1;
+	offset = 1;
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
 		argc = array_len(argv);
-		i = -1;
+		offset = 0;
 	}
 	*content = (int *)ft_calloc(argc - 1, sizeof(int));
 	if (!*content)
 		return (NULL);
-	while (++i < argc)
+	while (++i < argc - offset)
 	{
-		(*content)[i - 1] = ft_atoi(argv[i]);
-		if (!(ft_isnumber(argv[i]) || *argv[i] == '-' || *argv[i] == '+')
-			|| in_list(*content, i - 1, (*content)[i - 1]))
+		(*content)[i] = ft_atoi(argv[i + offset]);
+		if (!(ft_isnumber(argv[i + offset]) || *argv[i + offset] == '-' || *argv[i + offset] == '+')
+			|| in_list(*content, i, (*content)[i]))
 		{
 			ft_printf("Error!\n");
 			return (NULL);
 		}
-		new = ft_dlstnew((*content) + i - 1);
+		new = ft_dlstnew((*content) + i);
 		if (!new)
 			return (NULL);
 		ft_dlstadd_back(&stack, new);

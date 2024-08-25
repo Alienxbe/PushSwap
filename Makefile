@@ -6,7 +6,7 @@
 #    By: marykman <marykman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2023/11/10 21:35:23 by marykman         ###   ########.fr        #
+#    Updated: 2024/08/25 18:35:56 by marykman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ SRCS_SOLVE			:=	ft_cost.c \
 						get_smallest_cost.c
 SRCS_UTILS			:=	fill_stack.c \
 						is_sorted.c \
-						print_stack.c
+						print_stack.c \
+						ft_abs.c
 OBJS				:=	$(addprefix objs/, ${SRCS:.c=.o})
 OBJS				+=	$(addprefix objs/moves/, ${SRCS_MOVES:.c=.o})
 OBJS				+=	$(addprefix objs/solve/, ${SRCS_SOLVE:.c=.o})

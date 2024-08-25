@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:35:50 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/11 13:44:37 by marykman         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:37:02 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_dlist	*cost_sort(t_dlist **stack_a, t_dlist **stack_b)
 	t_dlist	*smallest;
 
 	moves = NULL;
+	ft_pb(&moves, stack_a, stack_b);
+	ft_pb(&moves, stack_a, stack_b);
 	while (*stack_a)
 	{
 		smallest = get_smallest_cost(stack_a, stack_b);

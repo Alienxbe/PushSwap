@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 17:54:04 by marykman          #+#    #+#             */
-/*   Updated: 2024/08/25 18:31:47 by marykman         ###   ########.fr       */
+/*   Created: 2024/08/25 18:30:52 by marykman          #+#    #+#             */
+/*   Updated: 2024/08/25 18:31:37 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
-
-# include "ft_dlist.h"
-
-t_dlist	*fill_stack(int argc, char **argv, int **content);
-int		is_sorted(t_dlist *stack);
-void	print_stack(t_dlist *stack_a, t_dlist *stack_b);
-void	print_moves(void *content);
-int		ft_abs(int val);
-
-#endif
+int	ft_abs(int val)
+{
+	if (val < 0)
+		return (-val);
+	return (val);
+}

@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 09:48:24 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/11 14:07:12 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/25 18:37:55 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 		return (1);
 	content = NULL;
 	moves = NULL;
+	// ft_printf("Allocation done\n");
 	stack_a = fill_stack(argc, argv, &content);
 	stack_b = NULL;
 	if (!stack_a || is_sorted(stack_a))
