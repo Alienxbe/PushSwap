@@ -6,7 +6,7 @@
 #    By: marykman <marykman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2024/08/27 19:37:28 by marykman         ###   ########.fr        #
+#    Updated: 2024/08/27 19:40:55 by marykman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ PREFIX			=	[${YELLOW}${NAME}${RESET}]\t
 # ---------------------------------Compilation---------------------------------
 
 CC					:=	@gcc
-CFLAGS				:=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS				:=	-Wall -Wextra -Werror
 RM					:=	@rm -f
 
 # ---------------------------------Librairies----------------------------------

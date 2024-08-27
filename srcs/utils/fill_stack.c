@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:38:43 by marykman          #+#    #+#             */
-/*   Updated: 2024/08/27 19:37:05 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/27 22:07:42 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,15 @@ static int	add_new_element(char *str, int *content, int i, t_dlist	**stack)
 		|| in_list(content, i, content[i]))
 	{
 		ft_fprintf(STDERR_FILENO, "Error!\n");
+		ft_dlstclear(stack, NULL);
 		return (0);
 	}
 	new = ft_dlstnew(content + i);
 	if (!new)
+	{
+		ft_dlstclear(stack, NULL);
 		return (0);
+	}
 	ft_dlstadd_back(stack, new);
 	return (1);
 }

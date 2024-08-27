@@ -1,6 +1,6 @@
 import random
 
-l = [n for n in range(500)]
+l = [n for n in range(100)]
 random.shuffle(l)
 
 for n in l:
