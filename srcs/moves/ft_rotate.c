@@ -6,13 +6,12 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:06:46 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/10 22:20:16 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/27 19:38:55 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "moves.h"
-#include "ft_printf.h"
 
 static void	ft_rx(t_dlist **moves, t_dlist **stack, char *name)
 {

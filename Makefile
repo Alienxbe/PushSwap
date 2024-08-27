@@ -6,7 +6,7 @@
 #    By: marykman <marykman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2024/08/25 18:35:56 by marykman         ###   ########.fr        #
+#    Updated: 2024/08/27 19:37:28 by marykman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ PREFIX			=	[${YELLOW}${NAME}${RESET}]\t
 # ---------------------------------Compilation---------------------------------
 
 CC					:=	@gcc
-CFLAGS				:=	-Wall -Wextra -Werror
+CFLAGS				:=	-Wall -Wextra -Werror -g -fsanitize=address
 RM					:=	@rm -f
 
 # ---------------------------------Librairies----------------------------------
@@ -59,10 +59,10 @@ SRCS_MOVES			:=	ft_get_move_value.c \
 SRCS_SOLVE			:=	ft_cost.c \
 						ft_minstack.c \
 						ft_solve.c \
-						get_smallest_cost.c
+						get_smallest_cost.c \
+						ft_solve_small.c
 SRCS_UTILS			:=	fill_stack.c \
 						is_sorted.c \
-						print_stack.c \
 						ft_abs.c
 OBJS				:=	$(addprefix objs/, ${SRCS:.c=.o})
 OBJS				+=	$(addprefix objs/moves/, ${SRCS_MOVES:.c=.o})

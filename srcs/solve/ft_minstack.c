@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:59:57 by marykman          #+#    #+#             */
-/*   Updated: 2023/11/11 00:23:34 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/27 18:43:40 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
  */
 t_dlist	*ft_minstack(t_dlist *stack, int bottom_value)
 {
-	t_dlist *min;
-	
+	t_dlist	*min;
+
 	min = NULL;
 	while (stack)
 	{
@@ -46,8 +46,8 @@ t_dlist	*ft_minstack(t_dlist *stack, int bottom_value)
  */
 t_dlist	*ft_maxstack(t_dlist *stack, int top_value)
 {
-	t_dlist *max;
-	
+	t_dlist	*max;
+
 	max = NULL;
 	while (stack)
 	{

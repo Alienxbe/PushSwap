@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 21:00:04 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/10 19:58:54 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/27 18:41:26 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	ft_init_table(t_fmove *fmove)
 	fmove[RRR] = &ft_rrr;
 }
 
-void	ft_move(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b, t_move move)
+void	ft_move(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b,
+			t_move move)
 {
 	t_fmove	fmove[MOVE_LEN];
 

@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 09:48:24 by mykman            #+#    #+#             */
-/*   Updated: 2024/08/25 18:37:55 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/27 18:41:11 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	free_return(int value, t_dlist *stack, int *content)
 
 void	print_moves(void *content)
 {
-	char *str;
+	char	*str;
 
 	str = content;
 	ft_printf("%s\n", str);
@@ -43,18 +43,12 @@ int	main(int argc, char **argv)
 		return (1);
 	content = NULL;
 	moves = NULL;
-	// ft_printf("Allocation done\n");
 	stack_a = fill_stack(argc, argv, &content);
 	stack_b = NULL;
 	if (!stack_a || is_sorted(stack_a))
 		return (free_return(1, stack_a, content));
-
 	moves = cost_sort(&stack_a, &stack_b);
-
 	ft_dlstiter(moves, &print_moves);
-
-	// print_stack(stack_a, stack_b);
-	// Free
 	ft_dlstclear(&stack_a, NULL);
 	ft_dlstclear(&stack_b, NULL);
 	ft_dlstclear(&moves, NULL);

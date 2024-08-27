@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:17:15 by marykman          #+#    #+#             */
-/*   Updated: 2023/11/10 22:06:12 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/27 18:39:39 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	ft_rrr(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b);
 t_fmove	rotate_top_a(t_dlist *element);
 t_fmove	rotate_top_b(t_dlist *element);
 
-void	ft_move(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b, t_move move);
+void	ft_move(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b,
+			t_move move);
 void	ft_reverse_moves(t_dlist **moves, t_dlist **stack_a, t_dlist **stack_b);
 t_move	ft_get_move_value(char *move);
 
