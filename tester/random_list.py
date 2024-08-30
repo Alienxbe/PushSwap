@@ -6,7 +6,7 @@
 #    By: marykman <marykman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 23:49:43 by marykman          #+#    #+#              #
-#    Updated: 2024/08/30 23:53:54 by marykman         ###   ########.fr        #
+#    Updated: 2024/08/30 23:58:35 by marykman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,5 +21,6 @@ def	generate_random_list(n: int):
 
 if __name__ == '__main__':
 	if (len(sys.argv) != 2 or not sys.argv[1].isdigit()):
+		print("Usage: python3 random_list.py <size>")
 		sys.exit()
 	print(generate_random_list(int(sys.argv[1])))

@@ -6,7 +6,7 @@
 #    By: marykman <marykman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 23:52:25 by marykman          #+#    #+#              #
-#    Updated: 2024/08/30 23:54:24 by marykman         ###   ########.fr        #
+#    Updated: 2024/08/30 23:58:01 by marykman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ def get_op_count(n: int):
 if __name__ == '__main__':
 	if (len(sys.argv) != 4 or not sys.argv[1].isdigit() or not sys.argv[2].isdigit()
 		or not sys.argv[3].isdigit()):
+		print("Usage: python3 tester.py <size> <number of test> <above warning>")
 		sys.exit()
 	total = 0
 	above = 0
