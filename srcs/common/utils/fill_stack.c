@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:38:43 by marykman          #+#    #+#             */
-/*   Updated: 2024/08/27 22:07:42 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/30 23:43:25 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	add_new_element(char *str, int *content, int i, t_dlist	**stack)
 		|| ft_strlen(str) != (size_t)(endptr - str)
 		|| in_list(content, i, content[i]))
 	{
-		ft_fprintf(STDERR_FILENO, "Error!\n");
+		ft_fprintf(STDERR_FILENO, "Error\n");
 		ft_dlstclear(stack, NULL);
 		return (0);
 	}
@@ -90,6 +90,8 @@ t_dlist	*fill_stack(int argc, char **argv, int **content)
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
+		if (!argv)
+			return (NULL);
 		argc = array_len(argv);
 		offset = 0;
 	}
@@ -98,7 +100,7 @@ t_dlist	*fill_stack(int argc, char **argv, int **content)
 		return (NULL);
 	while (++i < argc - offset)
 		if (!add_new_element(argv[i + offset], *content, i, &stack))
-			return (NULL);
+			break ;
 	if (offset == 0)
 		free_tab(argv);
 	return (stack);

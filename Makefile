@@ -6,7 +6,7 @@
 #    By: marykman <marykman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 11:09:13 by mykman            #+#    #+#              #
-#    Updated: 2024/08/27 19:40:55 by marykman         ###   ########.fr        #
+#    Updated: 2024/08/30 23:41:52 by marykman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,13 +41,15 @@ LIBRARIES			:=	-L./${FT_FOLDER} -lft
 # --------------------------------Source files---------------------------------
 
 NAME				:=	push_swap
+NAME_CHECKER		:=	checker
 
 # Headers files
-FILES				:=	push_swap.h
+FILES				:=	moves.h \
+						solve.h \
+						utils.h
 HEADERS				:=	$(addprefix includes/, ${FILES});
 
 # C files
-SRCS				:=	main.c
 SRCS_MOVES			:=	ft_get_move_value.c \
 						ft_move.c \
 						ft_push.c \
@@ -56,18 +58,21 @@ SRCS_MOVES			:=	ft_get_move_value.c \
 						ft_rrotate.c \
 						ft_swap.c \
 						rotate_top.c
-SRCS_SOLVE			:=	ft_cost.c \
+SRCS_UTILS			:=	fill_stack.c \
+						is_sorted.c \
+						ft_abs.c
+SRCS_SOLVER			:=	main.c \
+						ft_cost.c \
 						ft_minstack.c \
 						ft_solve.c \
 						get_smallest_cost.c \
 						ft_solve_small.c
-SRCS_UTILS			:=	fill_stack.c \
-						is_sorted.c \
-						ft_abs.c
-OBJS				:=	$(addprefix objs/, ${SRCS:.c=.o})
-OBJS				+=	$(addprefix objs/moves/, ${SRCS_MOVES:.c=.o})
-OBJS				+=	$(addprefix objs/solve/, ${SRCS_SOLVE:.c=.o})
-OBJS				+=	$(addprefix objs/utils/, ${SRCS_UTILS:.c=.o})
+SRCS_CHECKER		:=	main.c
+
+OBJS_COMMON			:=	$(addprefix objs/common/moves/, ${SRCS_MOVES:.c=.o})
+OBJS_COMMON			+=	$(addprefix objs/common/utils/, ${SRCS_UTILS:.c=.o})
+OBJS_SOLVER			:=	$(addprefix objs/solver/, ${SRCS_SOLVER:.c=.o})
+OBJS_CHECKER		:=	$(addprefix objs/checker/, ${SRCS_CHECKER:.c=.o})
 
 # -----------------------------------Rules-------------------------------------
 
@@ -75,8 +80,12 @@ objs/%.o:	srcs/%.c
 	${CC} ${CFLAGS} -c ${INCLUDES} $< -o $@
 	@echo "${PREFIX}Compilation of $<..."
 
-$(NAME):	${FT} ${OBJS} ${HEADERS}
-	${CC} ${CFLAGS} ${OBJS} ${LIBRARIES} -o $@
+$(NAME):	${FT} ${OBJS_COMMON} ${OBJS_SOLVER} ${HEADERS}
+	${CC} ${CFLAGS} ${OBJS_COMMON} ${OBJS_SOLVER} ${LIBRARIES} -o $@
+	@echo "${PREFIX}$@ Compiled !"
+
+$(NAME_CHECKER):	${FT} ${OBJS_COMMON} ${OBJS_CHECKER} ${HEADERS}
+	${CC} ${CFLAGS} ${OBJS_COMMON} ${OBJS_CHECKER} ${LIBRARIES} -o $@
 	@echo "${PREFIX}$@ Compiled !"
 
 $(FT):
@@ -84,12 +93,14 @@ $(FT):
 
 all:	${NAME}
 
+bonus:	${NAME_CHECKER}
+
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS_COMMON} ${OBJS_SOLVER} ${OBJS_CHECKER}
 	${MAKE_FT} clean
 
 fclean:
-	${RM} ${OBJS} ${NAME}
+	${RM} ${OBJS_COMMON} ${OBJS_SOLVER} ${OBJS_CHECKER} ${NAME} ${NAME_CHECKER}
 	${MAKE_FT} fclean
 
 re:		fclean all

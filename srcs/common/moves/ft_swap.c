@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:04:04 by mykman            #+#    #+#             */
-/*   Updated: 2023/11/10 20:54:19 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/30 23:34:15 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	ft_sx(t_dlist **moves, t_dlist **stack, char *name)
 {
 	t_dlist	*tmp;
 
+	if (!*stack)
+		return ;
 	tmp = ft_dlstswap(*stack, (*stack)->next);
 	if (tmp)
 		*stack = tmp;

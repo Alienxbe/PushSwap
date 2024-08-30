@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 09:48:24 by mykman            #+#    #+#             */
-/*   Updated: 2024/08/27 18:41:11 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/30 23:41:27 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "solve.h"
 #include "utils.h"
 
-int	free_return(int value, t_dlist *stack, int *content)
+static int	free_return(int value, t_dlist *stack, int *content)
 {
 	if (content)
 		free(content);
@@ -24,7 +24,7 @@ int	free_return(int value, t_dlist *stack, int *content)
 	return (value);
 }
 
-void	print_moves(void *content)
+static void	print_moves(void *content)
 {
 	char	*str;
 

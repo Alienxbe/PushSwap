@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:05:14 by mykman            #+#    #+#             */
-/*   Updated: 2024/08/27 19:38:58 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/30 23:31:28 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 static void	ft_px(t_dlist **moves, t_dlist **stack_from, t_dlist **stack_to,
 				char *name)
 {
-	ft_dlstadd_front(stack_to, ft_dlstremove_front(stack_from));
+	t_dlist	*element;
+
+	element =  ft_dlstremove_front(stack_from);
+	if (element)
+		ft_dlstadd_front(stack_to, element);
 	if (name)
 		ft_dlstadd_back(moves, ft_dlstnew(name));
 }

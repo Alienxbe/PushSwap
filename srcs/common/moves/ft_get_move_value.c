@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:01:33 by marykman          #+#    #+#             */
-/*   Updated: 2023/11/11 13:42:24 by marykman         ###   ########.fr       */
+/*   Updated: 2024/08/30 22:28:24 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_move	ft_get_move_value(char *move)
 	t_move	index;
 	char	**moves;
 
+	if (!move)
+		return (MOVE_ERROR);
 	moves = (char *[MOVE_LEN]){
 		MOVE_SA_STR,
 		MOVE_SB_STR,
