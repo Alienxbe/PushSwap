@@ -1,23 +1,31 @@
-import random
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tester.py                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: marykman <marykman@student.s19.be>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/08/30 23:52:25 by marykman          #+#    #+#              #
+#    Updated: 2024/08/30 23:54:24 by marykman         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 import sys
 import subprocess
+from random_list import generate_random_list
 
 # python3 tester.py <size> <number of test> <above warning>
-
-def	generate_random_list(n: int):
-	l = [str(n) for n in range(n)]
-	random.shuffle(l)
-	return " ".join(l)
 
 def get_op_count(n: int):
 	arg = generate_random_list(n)
 	p = subprocess.run(['./push_swap', arg], capture_output=True, text=True)
 	return len(p.stdout.splitlines())
 
-def	main():
+
+if __name__ == '__main__':
 	if (len(sys.argv) != 4 or not sys.argv[1].isdigit() or not sys.argv[2].isdigit()
 		or not sys.argv[3].isdigit()):
-		return
+		sys.exit()
 	total = 0
 	above = 0
 	minimum = None
@@ -32,5 +40,3 @@ def	main():
 		print(f"test {i}: {op}\tTotal average: {int(total / (i + 1))}")
 	print(f"{above}/{sys.argv[2]} tests where above the given limit ({sys.argv[3]})")
 	print(f"Maximum: {maximum}\tMinimum: {minimum}")
-
-main()
