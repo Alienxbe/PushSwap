@@ -10,8 +10,8 @@
 # Executables
 *.exe
 *.out
-push_swap
-checker
+/push_swap
+/checker
 
 # Vagrind
 *.dSYM
