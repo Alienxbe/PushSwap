@@ -6,7 +6,7 @@
 /*   By: marykman <marykman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:01:33 by marykman          #+#    #+#             */
-/*   Updated: 2024/08/30 22:28:24 by marykman         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:52:59 by marykman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_move	ft_get_move_value(char *move)
 	};
 	index = -1;
 	while (++index < MOVE_LEN)
-		if (!ft_strncmp(move, moves[index], 3))
+		if (!ft_strncmp(move, moves[index], ft_strlen(move)))
 			return (index);
 	return (MOVE_ERROR);
 }
